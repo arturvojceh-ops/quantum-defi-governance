@@ -562,10 +562,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 **CONTACT**
 
-- **Project Lead**: [Artur Vojceh](https://linkedin.com/in/arturvojceh)
-- **Twitter**: [@arturvojceh](https://twitter.com/arturvojceh)
-- **Discord**: [Join our community](https://discord.gg/quantum-defi)
-- **Email**: [artur.vojceh@example.com](mailto:artur.vojceh@example.com)
+- **Telegram**: @VAA369
+- **Email**: arturvojceh@gmail.com
 
 ---
 
