@@ -55,7 +55,6 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        // Quantum theme colors
         quantum: {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -69,7 +68,6 @@ module.exports = {
           900: '#0c4a6e',
           950: '#082f49',
         },
-        // DeFi theme colors
         defi: {
           50: '#fefce8',
           100: '#fef9c3',
@@ -83,7 +81,6 @@ module.exports = {
           900: '#713f12',
           950: '#422006',
         },
-        // Security theme colors
         security: {
           50: '#f0fdf4',
           100: '#dcfce7',
@@ -97,7 +94,6 @@ module.exports = {
           900: '#14532d',
           950: '#052e16',
         },
-        // Error theme colors
         error: {
           50: '#fef2f2',
           100: '#fee2e2',
@@ -111,7 +107,6 @@ module.exports = {
           900: '#7f1d1d',
           950: '#450a0a',
         },
-        // Warning theme colors
         warning: {
           50: '#fffbeb',
           100: '#fef3c7',
@@ -302,7 +297,6 @@ module.exports = {
     require('@tailwindcss/container-queries'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/scrollbar'),
-    // Custom plugin for quantum theme
     function({ addUtilities, theme }) {
       const newUtilities = {
         '.text-gradient': {

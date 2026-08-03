@@ -3,17 +3,15 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
-  // Enable experimental features
   experimental: {
     appDir: true,
     serverComponentsExternalPackages: ['@prisma/client'],
     optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'recharts', 'three'],
     scrollRestoration: true,
-    largePageDataBytes: 128 * 1000, // 128KB
+    largePageDataBytes: 128 * 1000,
   },
   
-  // Image optimization
   images: {
     domains: [
       'localhost',
@@ -28,7 +26,6 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
-  // Environment variables
   env: {
     NEXT_PUBLIC_APP_NAME: 'Quantum DeFi Governance',
     NEXT_PUBLIC_APP_VERSION: process.env.npm_package_version,
@@ -46,31 +43,25 @@ const nextConfig = {
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
   },
   
-  // Webpack configuration
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Add WebAssembly support
+  webpack: (config, { dev, isServer }) => {
     config.experiments = {
       ...config.experiments,
       asyncWebAssembly: true,
       layers: true,
     };
-    
-    // Add Rust/WebAssembly compilation
+
     config.resolve.extensions.push('.wasm');
-    
-    // Add custom loader for WebAssembly
+
     config.module.rules.push({
       test: /\.wasm$/,
       type: 'webassembly/async',
     });
-    
-    // Add support for Three.js
+
     config.resolve.alias = {
       ...config.resolve.alias,
       three: 'three',
     };
-    
-    // Add optimization for production
+
     if (!dev && !isServer) {
       config.optimization = {
         ...config.optimization,
@@ -108,7 +99,6 @@ const nextConfig = {
     return config;
   },
   
-  // Redirects
   async redirects() {
     return [
       {
@@ -129,7 +119,6 @@ const nextConfig = {
     ];
   },
   
-  // Rewrites
   async rewrites() {
     return [
       {
@@ -143,7 +132,6 @@ const nextConfig = {
     ];
   },
   
-  // Headers
   async headers() {
     return [
       {
@@ -204,65 +192,36 @@ const nextConfig = {
     ];
   },
   
-  // Output configuration
   output: 'standalone',
-  
-  // Dist directory
   distDir: 'dist',
-  
-  // Power by header
   poweredByHeader: false,
-  
-  // Generate etags
   generateEtags: true,
-  
-  // Generate build ID
   generateBuildId: async () => {
     return `quantum-defi-governance-${Date.now()}`;
   },
-  
-  // Compression
   compress: true,
-  
-  // HTTP Agent
   httpAgentOptions: {
     keepAlive: true,
   },
-  
-  // Asset prefix
   assetPrefix: process.env.NODE_ENV === 'production' ? 'https://cdn.quantum-defi-governance.com' : undefined,
-  
-  // Base path
   basePath: process.env.NODE_ENV === 'production' ? '/app' : undefined,
-  
-  // Trailing slash
   trailingSlash: false,
-  
-  // i18n
   i18n: {
     locales: ['en', 'zh', 'ja', 'ko', 'es', 'fr', 'de', 'ru'],
     defaultLocale: 'en',
     localeDetection: true,
   },
-  
-  // TypeScript configuration
   typescript: {
     ignoreBuildErrors: false,
     tsconfigPath: './tsconfig.json',
   },
-  
-  // ESLint configuration
   eslint: {
     ignoreDuringBuilds: false,
     dirs: ['app', 'components', 'lib', 'utils', 'hooks', 'types'],
   },
-  
-  // Bundle analyzer
   bundleAnalyzer: {
     enabled: process.env.ANALYZE === 'true',
   },
-  
-  // Logging
   logging: {
     fetches: {
       fullUrl: false,
